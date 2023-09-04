@@ -1,0 +1,3 @@
+<template>
+  HeaderSection
+</template>

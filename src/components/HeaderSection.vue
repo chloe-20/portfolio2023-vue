@@ -12,7 +12,7 @@ import { headerNav } from "@/constants/index";
       </div>
       <nav class="header__nav" :class="{ show: isNavVisible }" role="navigation" aria-label="메인 메뉴">
         <ul>
-          <li v-for="(nav, key) in headerNav" :key="key"><a href="nav.url">{{ nav.title }}</a></li>
+          <li v-for="(nav, key) in headerNav" :key="key"><a :href="nav.url">{{ nav.title }}</a></li>
         </ul>
       </nav>
       <div 

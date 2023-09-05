@@ -21,11 +21,43 @@ import { portText } from "@/constants/index";
   </section>
 </template>
 
+<script>
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+  mounted: function () {
+    this.scrollAnimation();
+  },
+  methods: {
+    scrollAnimation() {
+      const horSection = gsap.utils.toArray(".portfolio__item");
+
+      gsap.to(horSection, {
+        xPercent: -120 * (horSection.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#portfolio",
+          start: "top 56px",
+          end: "+=3000",
+          pin: true,
+          scrub: 1,
+          markers: false,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      });
+    },
+  },
+};
+</script>
+
 <style lang="scss">
 #portfolio {
   width: 100%;
   margin-top: 30vh;
-  // overflow: hidden;
+  overflow: hidden;
 }
 .portfolio__inner {
   padding: 16px;

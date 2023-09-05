@@ -12,7 +12,7 @@ import { headerNav } from "@/constants/index";
       </div>
       <nav class="header__nav" :class="{ show: isNavVisible }" role="navigation" aria-label="메인 메뉴">
         <ul>
-          <li v-for="(nav, key) in headerNav" :key="key"><a :href="nav.url">{{ nav.title }}</a></li>
+          <li v-for="(nav, key) in headerNav" :key="key"><a :href="nav.url" @click="scrollLink($event)">{{ nav.title }}</a></li>
         </ul>
       </nav>
       <div 
@@ -41,6 +41,17 @@ export default {
     toggleMobileMenu() {
       this.isNavVisible = !this.isNavVisible;
     }
+    ,
+    scrollLink(event) {
+        event.preventDefault();
+
+        const targetId = event.target.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+    },
   }
 }
 </script>
